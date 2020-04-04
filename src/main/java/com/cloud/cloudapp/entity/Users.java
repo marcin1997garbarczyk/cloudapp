@@ -46,6 +46,9 @@ public class Users {
 	
 	@Column(name="type")
 	private String type;
+
+	@Column(name="province")
+	private String province;
 	
 	@Column(name="active")
 	private int active;
@@ -68,7 +71,8 @@ public class Users {
 			@Email(message = "Please provide a valid Email") @NotEmpty(message = "Please provide an email") String email,
 			@NotEmpty(message = "Please provide your password") @Length(min = 5, message = "*Your password must have at least 5 characters") String password,
 			@NotEmpty(message = "*Please provide your name") String name,
-			@NotEmpty(message = "*Please provide your last name") String lastName, String type, int active,
+			@NotEmpty(message = "*Please provide your last name") String lastName,
+			@NotEmpty(message = "*Please provide your province") String province,String type, int active,
 			Set<Role> roles) {
 		super();
 		this.id = id;
@@ -79,10 +83,18 @@ public class Users {
 		this.type = type;
 		this.active = active;
 		this.roles = roles;
+		this.province = province;
 	}
 
 
 
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
 
 
 	public int getActive() {
