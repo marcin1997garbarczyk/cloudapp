@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import com.cloud.cloudapp.entity.User;
+import com.cloud.cloudapp.entity.Users;
 import com.cloud.cloudapp.service.UserService;
 
 @Controller
@@ -50,18 +50,18 @@ public class LoginController
 	public ModelAndView showRegistrationPage() 
 	{
 		ModelAndView modelAndView = new ModelAndView();
-		User user = new User();
-		modelAndView.addObject("user", user);
+		Users users = new Users();
+		modelAndView.addObject("user", users);
 		modelAndView.setViewName("registration");
 		return modelAndView;
 	}
 	
 	@PostMapping("/registration")
-	public ModelAndView createUser(@Valid User user, BindingResult bindingResult) 
+	public ModelAndView createUser(@Valid Users users, BindingResult bindingResult) 
 	{
 		System.out.println(bindingResult);
 		ModelAndView modelAndView = new ModelAndView();
-		User userExists = userService.findUserByEmail(user.getEmail());
+		Users userExists = userService.findUserByEmail(users.getEmail());
 		
 		if(userExists != null) 
 		{
@@ -75,9 +75,9 @@ public class LoginController
 		}
 		else 
 		{
-			userService.saveUser(user);
+			userService.saveUser(users);
 			modelAndView.addObject("successMessage", "User has been registered succesfully");
-			modelAndView.addObject("user", new User());
+			modelAndView.addObject("user", new Users());
 			modelAndView.setViewName("registration");
 		}
 		
@@ -88,12 +88,12 @@ public class LoginController
 	public ModelAndView home() 
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
+		Users users = userService.findUserByEmail(auth.getName());
 		
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.addObject("user", user);
+		modelAndView.addObject("user", users);
 		modelAndView.setViewName("home");
 
 		return modelAndView;

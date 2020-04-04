@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.cloud.cloudapp.entity.Role;
-import com.cloud.cloudapp.entity.User;
+import com.cloud.cloudapp.entity.Users;
 import com.cloud.cloudapp.repository.RoleRepository;
 import com.cloud.cloudapp.repository.UserRepository;
 
@@ -33,41 +33,41 @@ public class UserService
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
-	public User findUserByEmail(String email) 
+	public Users findUserByEmail(String email) 
 	{
 		return userRepository.findByEmail(email);
 	}
 	
-	public List<User> findAll()
+	public List<Users> findAll()
 	{
 		return userRepository.findAll();
 	}
 	
-	public User getOne(Integer id) 
+	public Users getOne(Integer id) 
 	{
 		return userRepository.getOne(id);
 	}
 	
-	public void saveUser(User user) 
+	public void saveUser(Users users) 
 	{
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setActive(1);
+		users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
+		users.setActive(1);
 		Role userRole = roleRepository.findByRole("ADMIN");
-		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-		userRepository.save(user);
+		users.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		userRepository.save(users);
 	}
 	
-	public void saveOnlyUser(User user) 
+	public void saveOnlyUser(Users users) 
 	{
-		userRepository.save(user);
+		userRepository.save(users);
 	}
 	
-	public List<User> findByNameAndLastName(String name, String lastName)
+	public List<Users> findByNameAndLastName(String name, String lastName)
 	{
 		return userRepository.findByNameAndLastName(name, lastName);
 	}
 	
-	public List<User> findByName(String name)
+	public List<Users> findByName(String name)
 	{
 		return userRepository.findByName(name);
 	}

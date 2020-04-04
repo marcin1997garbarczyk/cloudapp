@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.Length;
 import com.cloud.cloudapp.entity.Role;
 
 @Entity
-public class User {
+public class Users {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -56,7 +56,7 @@ public class User {
 
 	
 	
-	public User() {
+	public Users() {
 		super();
 	}
 
@@ -64,7 +64,7 @@ public class User {
 	
 
 
-	public User(int id,
+	public Users(int id,
 			@Email(message = "Please provide a valid Email") @NotEmpty(message = "Please provide an email") String email,
 			@NotEmpty(message = "Please provide your password") @Length(min = 5, message = "*Your password must have at least 5 characters") String password,
 			@NotEmpty(message = "*Please provide your name") String name,
