@@ -1,14 +1,22 @@
 package com.cloud.cloudapp.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
+
+import com.cloud.cloudapp.entity.Role;
 
 @Entity
 public class User {
@@ -38,6 +46,13 @@ public class User {
 	
 	@Column(name="type")
 	private String type;
+	
+	@Column(name="active")
+	private int active;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 
 	
 	
@@ -45,11 +60,16 @@ public class User {
 		super();
 	}
 
+
+	
+
+
 	public User(int id,
 			@Email(message = "Please provide a valid Email") @NotEmpty(message = "Please provide an email") String email,
 			@NotEmpty(message = "Please provide your password") @Length(min = 5, message = "*Your password must have at least 5 characters") String password,
 			@NotEmpty(message = "*Please provide your name") String name,
-			@NotEmpty(message = "*Please provide your last name") String lastName, String type) {
+			@NotEmpty(message = "*Please provide your last name") String lastName, String type, int active,
+			Set<Role> roles) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -57,6 +77,36 @@ public class User {
 		this.name = name;
 		this.lastName = lastName;
 		this.type = type;
+		this.active = active;
+		this.roles = roles;
+	}
+
+
+
+
+
+	public int getActive() {
+		return active;
+	}
+
+
+
+
+
+	public void setActive(int active) {
+		this.active = active;
+	}
+
+
+
+
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	public int getId() {
