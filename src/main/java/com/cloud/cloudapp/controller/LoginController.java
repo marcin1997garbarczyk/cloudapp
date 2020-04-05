@@ -141,13 +141,14 @@ public class LoginController
 				Iterator iterator = users.iterator();
 				while(iterator.hasNext()) {
 					Users tempUser = (Users) iterator.next();
-					//Users tempUserForCheck = userService.findUserByEmail(tempUser.getEmail());
-					Users tempUserForCheck = userService.findUserByEmailToCheckMsg(tempUser.getEmail(),message);
-//					if(!tempUserForCheck.getLastNotificationForProvince().equalsIgnoreCase(message)) {
+					Users tempUserForCheck = userService.findUserByEmail(tempUser.getEmail());
+					//Users tempUserForCheck = userService.findUserByEmailToCheckMsg(tempUser.getEmail(),message);
+					
+					if(!tempUserForCheck.getLastNotificationForProvince().equalsIgnoreCase(message)) {
 					tempUserForCheck.setLastNotificationForProvince(message);
 			            userService.saveOnlyUser(tempUserForCheck);
 			            emailService.sendSimpleMessage(tempUserForCheck.getEmail(),"ALERT",message);
-//					}
+					}
 				}
 		} catch(Exception e) {
 			
