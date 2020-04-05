@@ -20,9 +20,7 @@ public class Role
 	private String role;
 	
 	Role()
-	{
-		
-	}
+	{}
 
 	public Role(String role) 
 	{

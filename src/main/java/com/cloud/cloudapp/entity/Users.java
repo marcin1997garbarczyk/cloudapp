@@ -61,16 +61,11 @@ public class Users {
 	private Set<Role> roles;
 
 	
-	
 	public Users() {
 		super();
 		this.type="USER";
 		this.lastNotificationForProvince = "";
 	}
-
-
-	
-
 
 	public Users(int id,
 			@Email(message = "Please provide a valid Email") @NotEmpty(message = "Please provide an email") String email,
@@ -91,8 +86,6 @@ public class Users {
 		this.province = province;
 		this.lastNotificationForProvince = "";
 	}
-
-
 
 	public String getLastNotificationForProvince() {
 		return lastNotificationForProvince;
@@ -117,17 +110,9 @@ public class Users {
 		return active;
 	}
 
-
-
-
-
 	public void setActive(int active) {
 		this.active = active;
 	}
-
-
-
-
 
 	public Set<Role> getRoles() {
 		return roles;
@@ -149,12 +134,6 @@ public class Users {
 		return email;
 	}
 
-	@Override
-	public String toString() {
-		return "Users [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", lastName="
-				+ lastName + ", type=" + type + ", province=" + province + ", active=" + active
-				+ ", lastNotificationForProvince=" + lastNotificationForProvince + ", roles=" + roles + "]";
-	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -191,5 +170,10 @@ public class Users {
 		this.type = type;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Users [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", lastName="
+				+ lastName + ", type=" + type + ", province=" + province + ", active=" + active
+				+ ", lastNotificationForProvince=" + lastNotificationForProvince + ", roles=" + roles + "]";
+	}	
 }

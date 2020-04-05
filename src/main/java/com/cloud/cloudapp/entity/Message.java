@@ -9,11 +9,13 @@ public class Message {
 		
 		private String notification;
 		
-		public Message() {
+		public Message() 
+		{
 			super();
 		}
 
-		public Message(int id, String province, String notification) {
+		public Message(int id, String province, String notification) 
+		{
 			super();
 			this.id = id;
 			this.province = province;
@@ -30,19 +32,23 @@ public class Message {
 			this.id = id;
 		}
 
-		public String getProvince() {
+		public String getProvince() 
+		{
 			return province;
 		}
 
-		public void setProvince(String province) {
+		public void setProvince(String province) 
+		{
 			this.province = province;
 		}
 
-		public String getNotification() {
+		public String getNotification() 
+		{
 			return notification;
 		}
 
-		public void setNotification(String notification) {
+		public void setNotification(String notification) 
+		{
 			this.notification = notification;
 		}
 	}
