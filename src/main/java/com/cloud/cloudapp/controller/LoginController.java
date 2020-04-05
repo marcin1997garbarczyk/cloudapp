@@ -95,7 +95,7 @@ public class LoginController
 //				nUs.setPassword("hehehehehe");
 //				nUs.setProvince("wielkopolskie");
 //				nUs.setEmail("xzzdsadsazzzz@invalid.com"+strArray2[i]);
-				userService.saveUser(users);
+				userService.saveUser(user);
 //			}
 			modelAndView.addObject("successMessage", "User has been registered succesfully");
 			modelAndView.addObject("user", new Users());
@@ -132,7 +132,7 @@ public class LoginController
 	{
 		JSONObject jsonObject = new JSONObject();
 		try {
-				
+				//
 			 jsonObject = new JSONObject(data);
 			 String province = (String) jsonObject.get("province");
 			 String message = (String) jsonObject.get("messageContent");
@@ -141,12 +141,10 @@ public class LoginController
 				while(iterator.hasNext()) {
 					Users tempUser = (Users) iterator.next();
 					Users tempUserForCheck = userService.findUserByEmail(tempUser.getEmail());
-					//Users tempUserForCheck = userService.findUserByEmailToCheckMsg(tempUser.getEmail(),message);
-					
 					if(!tempUserForCheck.getLastNotificationForProvince().equalsIgnoreCase(message)) {
-					tempUserForCheck.setLastNotificationForProvince(message);
-			            userService.saveOnlyUser(tempUserForCheck);
-			            emailService.sendSimpleMessage(tempUserForCheck.getEmail(),"ALERT",message);
+						tempUser.setLastNotificationForProvince(message);
+			            userService.saveOnlyUser(tempUser);
+			            emailService.sendSimpleMessage(tempUser.getEmail(),"ALERT",message);
 					}
 				}
 		} catch(Exception e) {
@@ -154,21 +152,4 @@ public class LoginController
 		}
 	}
 
-//	@PostMapping("/sendAlertToUser")
-//	public ModelAndView sendAlerToUser(Message message, BindingResult bindingResult) 
-//	{
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		List<Users> users = userService.findByProvince(message.getProvince());
-//		Iterator iterator = users.iterator();
-//		while(iterator.hasNext()) {
-//			Users tempUser = (Users) iterator.next();
-//			tempUser.setLastNotificationForProvince(message.getNotification());
-//            emailService.sendSimpleMessage(tempUser.getEmail(),"ALERT",message.getNotification());
-//            userService.saveOnlyUser(tempUser);
-//		}
-//		ModelAndView modelAndView = new ModelAndView();
-//
-//		modelAndView.setViewName("adminPageView");
-//		return modelAndView;
-//	}
 }

@@ -149,6 +149,12 @@ public class Users {
 		return email;
 	}
 
+	@Override
+	public String toString() {
+		return "Users [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", lastName="
+				+ lastName + ", type=" + type + ", province=" + province + ", active=" + active
+				+ ", lastNotificationForProvince=" + lastNotificationForProvince + ", roles=" + roles + "]";
+	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
