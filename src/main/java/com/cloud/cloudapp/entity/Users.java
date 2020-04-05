@@ -61,6 +61,7 @@ public class Users {
 	
 	public Users() {
 		super();
+		this.type="USER";
 	}
 
 
@@ -80,7 +81,7 @@ public class Users {
 		this.password = password;
 		this.name = name;
 		this.lastName = lastName;
-		this.type = type;
+		this.type = "USER";
 		this.active = active;
 		this.roles = roles;
 		this.province = province;

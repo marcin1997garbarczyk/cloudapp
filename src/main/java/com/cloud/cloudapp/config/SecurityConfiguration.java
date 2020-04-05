@@ -10,13 +10,19 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import com.cloud.cloudapp.entity.Users;
+import com.cloud.cloudapp.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter 
 {
+	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
@@ -43,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(HttpSecurity http) throws Exception 
 	{
+
 		http
 			.authorizeRequests()
 			.antMatchers("/").permitAll()
@@ -62,6 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 			.logoutUrl("/logout")
 			.logoutSuccessUrl("/login?logout").and().exceptionHandling()
 			.accessDeniedPage("/access-denied");
+		
 	}
 
 	@Override

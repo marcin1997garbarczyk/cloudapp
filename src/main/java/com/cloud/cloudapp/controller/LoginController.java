@@ -88,13 +88,17 @@ public class LoginController
 	public ModelAndView home() 
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Users users = userService.findUserByEmail(auth.getName());
-		
+		Users user = userService.findUserByEmail(auth.getName());
 		
 		ModelAndView modelAndView = new ModelAndView();
+		if(user.getType().equalsIgnoreCase("ADMIN")) {
+			modelAndView.setViewName("adminPageView");
+		} else {
+			modelAndView.setViewName("userPageView");
+		}
 		
-		modelAndView.addObject("user", users);
-		modelAndView.setViewName("home");
+		modelAndView.addObject("user", user);
+//		modelAndView.setViewName("home");
 
 		return modelAndView;
 	}
