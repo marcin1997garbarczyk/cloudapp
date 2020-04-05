@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,9 @@ public class UserService
 	public Users findUserByEmail(String email) 
 	{
 		return userRepository.findByEmail(email);
+	}
+	public Users findUserByEmailToCheckMsg(String emailFromQuery,String messageFromQuery){
+		return userRepository.findUserByEmailToCheckMsg(emailFromQuery,messageFromQuery);
 	}
 	
 	public List<Users> findAll()

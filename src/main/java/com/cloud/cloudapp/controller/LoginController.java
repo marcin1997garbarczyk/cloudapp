@@ -86,17 +86,17 @@ public class LoginController
 		}
 		else 
 		{
-			String[] strArray2 = {"A","B","C","AXX","BXX","CXX","CAA","aaaaaaaaaaaaaaaax","BccccccccccXXAA","CXXAvvvvvvvvvvvAA","cxzcxzaA","sdassadasB","Cerw432","AXrew321X","BXe12X","Cewq231XX","C43t43AA","A23ewqXXAA","432ewBXXAA","3ewd213CXXAAA"}; 
-			for (int i = 0; i < strArray2.length; i++) {
-				Users nUs = new Users();
-				nUs.setActive(1);
-				nUs.setName("smiesznymail@invalid.com"+strArray2[i]);
-				nUs.setLastName("smiesznymaxxxxxil@invalid.com"+strArray2[i]);
-				nUs.setPassword("hehehehehe");
-				nUs.setProvince("wielkopolska");
-				nUs.setEmail("xzzzzzz@invalid.com"+strArray2[i]);
-				userService.saveUser(nUs);
-			}
+//			String[] strArray2 = {"A","B","C","AXX","BXX","CXX","CAA","aaaaaaaaaaaaaaaax","BccccccccccXXAA","CXXAvvvvvvvvvvvAA","cxzcxzaA","sdassadasB","Cerw432","AXrew321X","BXe12X","Cewq231XX","C43t43AA","A23ewqXXAA","432ewBXXAA","3ewd213CXXAAA"}; 
+//			for (int i = 0; i < strArray2.length; i++) {
+//				Users nUs = new Users();
+//				nUs.setActive(1);
+//				nUs.setName("smiesznymail@invalid.com"+strArray2[i]);
+//				nUs.setLastName("smiesznymaxxxxxil@invalid.com"+strArray2[i]);
+//				nUs.setPassword("hehehehehe");
+//				nUs.setProvince("wielkopolskie");
+//				nUs.setEmail("xzzdsadsazzzz@invalid.com"+strArray2[i]);
+				userService.saveUser(users);
+//			}
 			modelAndView.addObject("successMessage", "User has been registered succesfully");
 			modelAndView.addObject("user", new Users());
 			modelAndView.setViewName("registration");
@@ -141,11 +141,13 @@ public class LoginController
 				Iterator iterator = users.iterator();
 				while(iterator.hasNext()) {
 					Users tempUser = (Users) iterator.next();
-					if(!tempUser.getLastNotificationForProvince().equalsIgnoreCase(message)) {
-						tempUser.setLastNotificationForProvince(message);
-			            emailService.sendSimpleMessage(tempUser.getEmail(),"ALERT",message);
-			            userService.saveOnlyUser(tempUser);
-					}
+					//Users tempUserForCheck = userService.findUserByEmail(tempUser.getEmail());
+					Users tempUserForCheck = userService.findUserByEmailToCheckMsg(tempUser.getEmail(),message);
+//					if(!tempUserForCheck.getLastNotificationForProvince().equalsIgnoreCase(message)) {
+					tempUserForCheck.setLastNotificationForProvince(message);
+			            userService.saveOnlyUser(tempUserForCheck);
+			            emailService.sendSimpleMessage(tempUserForCheck.getEmail(),"ALERT",message);
+//					}
 				}
 		} catch(Exception e) {
 			

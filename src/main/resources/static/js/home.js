@@ -11,10 +11,10 @@ $('#inner-button').on('click', function(){
 			messageContent: messageContent
 	}
 	
-	$.ajax({
+	function getData(){ $.ajax({
 		 		type: "POST",
 		 		url: 'sendAlertToUser',
-		 		timeout: 5000,
+		 		timeout: 1000,
 		 		contentType : 'application/json',
 		 		data: JSON.stringify(message),
 		        success: function () {
@@ -24,24 +24,10 @@ $('#inner-button').on('click', function(){
 		 			console.log("fail");
 		 		},
 		 		error: function(e){
-		 			console.log('@@@@@@@@@@');
-		 			$.ajax({
-				 		type: "POST",
-				 		url: 'sendAlertToUser',
-				 		timeout: 5000,
-				 		contentType : 'application/json',
-				 		data: JSON.stringify(message),
-				        success: function () {
-				        	$spinner.addClass('hide');
-				        },
-				 		fail: function(){
-				 			console.log("fail");
-				 		},
-				 		error: function(e){
-				 			console.log('@@@@@@@@@@');
-				 			console.log(e);
-				 		}
-				 	});
+		 			console.log('@@@@error');
+		 			getData();
 		 		}
 		 	});
+	}
+	getData();
 });
