@@ -1,25 +1,12 @@
 package com.cloud.cloudapp.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="message")
 public class Message {
 
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		@Column(name="role_id")
 		private int id;
 		
-		@Column(name="role")
 		private String province;
 		
-		@Column(name="notification")
 		private String notification;
 		
 		public Message() {
@@ -58,6 +45,4 @@ public class Message {
 		public void setNotification(String notification) {
 			this.notification = notification;
 		}
-
-
 	}

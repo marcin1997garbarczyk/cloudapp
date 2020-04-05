@@ -68,11 +68,11 @@ public class LoginController
 	}
 	
 	@PostMapping("/registration")
-	public ModelAndView createUser(@Valid Users users, BindingResult bindingResult) 
+	public ModelAndView createUser(@Valid Users user, BindingResult bindingResult) 
 	{
 		System.out.println(bindingResult);
 		ModelAndView modelAndView = new ModelAndView();
-		Users userExists = userService.findUserByEmail(users.getEmail());
+		Users userExists = userService.findUserByEmail(user.getEmail());
 		
 		if(userExists != null) 
 		{
@@ -120,7 +120,6 @@ public class LoginController
 		}
 		
 		modelAndView.addObject("user", user);
-//		modelAndView.setViewName("home");
 
 		return modelAndView;
 	}
