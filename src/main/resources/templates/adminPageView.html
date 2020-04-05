@@ -15,7 +15,7 @@
 	<div id="tabOne"><H3>Administrative Panel</H3></div>
 	<div class="outer-group">
 		<div class="inner-group">
-        Choose your province:
+        Choose province for alert:
         	<select  name="province" id="province">
 							    <option th:value="'dolnośląskie'" th:text="dolnośląskie"></option>
 							    <option th:value="'wielkopolskie'" th:text="wielkopolskie"></option>
@@ -38,10 +38,10 @@
 							
 			</div>
 				<div class="text-area-inner">
-					<p>Information</p>
+					<p>Text Alert</p>
 						<textarea placeholder="Enter your text" id="messageContent"></textarea>
 				
-				<button id="inner-button">Powiadom</button>
+				<button id="inner-button" span style ="margin-left:50%">Notify users from Province</button>
 				
 				</div>
 			</div>
