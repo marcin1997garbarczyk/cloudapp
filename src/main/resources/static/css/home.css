@@ -2,119 +2,81 @@ body
 {
 	background-color: #202020;
 }
-#container
-{
-	width: 100%; height: 100%;
+.hide{
+	display:none;
 }
-#friend_list
+.container
 {
-	  position: fixed; right:0%; top: 6%; width: 250px; height: 100%; text-align: center;
-}	
-ul 
-{
-			list-style-type: none;
+	width:75%;
+	height:75%;
+	position: absolute;
+	top: 10%; left: 10%;
+	border:1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.dropdown-menu
-{
-	background-color: #202020; color: white; width:270px;
+#tabOne{
+	position: absolute;
+	width: 100%; height: 5%;
+	left:0%;
+	background-color: #330000;
+	text-align:center;
+	color:#e6e6e6;
+	font-family: 'Montserrat', sans-serif;		
 }
-nav-link dropdown-toggle
-{
-	color: white;
-}
-.nav-pills .show>.nav-link 
-{
-	background-color: #343a40;
-}
-.dropdown-toggle::after 
-{
-  		display:none;
-}
-#content
-{
-	background-color: #232322; width:700px; height: 1500px; left: 30%; top: 6%; position: absolute;
-}
-.sticky 
-{
-	position: fixed;
-	top: 0;
-	width: 100%;
-}
-.sticky + .content 
-{
-	  padding-top: 60px;
-}
-#navbar
-{
-	position:fixed;  
-	z-index:1; 
-	width:100%;
-}
-#left_nav
-{
-	width: 250px; height: 600px; position: fixed; left: 17%; top: 7%;  color: white;
-}
-a:not([href]):not([tabindex]) 
-{
-	color: white;
-}
-#create_group_menu
-{
-	position: relative; left: 40%; top: 10px;
-}
-#left_table_menu
-{
-	background-color: #202020; color: white;
-}
-#group_list
-{
-	overflow-wrap: break-word;	
-}
-#groups
-{
-	width: 145px;
+.outer-group{
 	position: relative;
-	left: 28%;
-	top: 5%;
+	top:10%;
+	width: 100%; height: 80%;
+	left:0%;
+	background-color: #1a1a1a;
+	text-align:center;
+	color:#e6e6e6;
+	font-family: 'Montserrat', sans-serif;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	    border-radius: 10px;
+			
 }
-#header
-{
-	left: 40%;
+
+.inner-group{
+	border-radius: 25px;
 	position: relative;
+	top:10%;
+	width: 100%; height: 5%;
+	left:0%;
+	background-color: #330000;
+	text-align:center;
+	color:#e6e6e6;
+	font-family: 'Montserrat', sans-serif;	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	
+	
 }
-a, a:hover
-{
-	color: white; text-decoration: none;	
+.text-area-inner{
+    border-radius: 25px;
+	position: relative;
+	font-size:20px;
+	top:15%; left:20%;
+	width: 60%; height: 60%;
+	background-color: #330000;
+	text-align:center;
+	color:#e6e6e6;
+	font-family: 'Montserrat', sans-serif;	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	
 }
-#drop_down_menu_request
-{
-	margin-left: 25%;
+#inner-button{
+    border-radius: 25px;
+	position: relative;
+	font-size:16px;
+	left:-28%;
+	width: 25%; 
+	height: 15%;
+	background-color: #330000;
+	color:#e6e6e6;
+	font-family: 'Montserrat', sans-serif;	
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#user_informations
-{
-	position: relative; width: 70%; height: 40%; left:27%;
-}
-#profile_photo
-{
-	background-color: #262626; position: relative; width: 170px; height: 170px;left: 1%; top: 1%;border-radius: 0%; border: 2px groove #262626;
-}
-#name_and_surname
-{
-	position: relative; width: 96%; height: 28%; left: 2%; top: 1%;
-}
-.user_name_and_surname
-{
-	color: white; font-size: large;
-}
-#account_statistic
-{
-	position: relative; width: 100%; height: 40%;
-}
-.stats_left
-{
-	margin-left: 4%; margin-bottom: 3%; width: 40%; position: relative; float: left;
-}
-.stats_right
-{
-	margin-left: 4%; margin-bottom: 3%; width: 40%; position: relative; float: right;
+textarea{
+	width:80%;
+	height:60%;
 }

@@ -12,6 +12,7 @@ import com.cloud.cloudapp.entity.Users;
 public interface UserRepository extends JpaRepository<Users, Integer> 
 {
 	Users findByEmail(String email);
+	List<Users> findByProvince(String province);
 	List<Users> findAll();
 	List<Users> findByNameAndLastName(String name, String lastName);
 	List<Users> findByName(String name);

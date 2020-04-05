@@ -71,4 +71,9 @@ public class UserService
 	{
 		return userRepository.findByName(name);
 	}
+
+	public List<Users> findByProvince(String province)
+	{
+		return userRepository.findByProvince(province);
+	}
 }

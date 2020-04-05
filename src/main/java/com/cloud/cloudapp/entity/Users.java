@@ -53,6 +53,9 @@ public class Users {
 	@Column(name="active")
 	private int active;
 	
+	@Column(name="lastNotificationForProvince")
+	private String lastNotificationForProvince;
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
@@ -62,6 +65,7 @@ public class Users {
 	public Users() {
 		super();
 		this.type="USER";
+		this.lastNotificationForProvince = "";
 	}
 
 
@@ -73,7 +77,7 @@ public class Users {
 			@NotEmpty(message = "Please provide your password") @Length(min = 5, message = "*Your password must have at least 5 characters") String password,
 			@NotEmpty(message = "*Please provide your name") String name,
 			@NotEmpty(message = "*Please provide your last name") String lastName,
-			@NotEmpty(message = "*Please provide your province") String province,String type, int active,
+			@NotEmpty(message = "*Please provide your province") String province,String type, int active,String lastNotificationForProvince,
 			Set<Role> roles) {
 		super();
 		this.id = id;
@@ -85,8 +89,19 @@ public class Users {
 		this.active = active;
 		this.roles = roles;
 		this.province = province;
+		this.lastNotificationForProvince = "";
 	}
 
+
+
+	public String getLastNotificationForProvince() {
+		return lastNotificationForProvince;
+	}
+
+
+	public void setLastNotificationForProvince(String lastNotificationForProvince) {
+		this.lastNotificationForProvince = lastNotificationForProvince;
+	}
 
 
 	public String getProvince() {
